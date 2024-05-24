@@ -356,7 +356,9 @@ main %>%
   geom_point() +
   geom_hline(yintercept = 0, color = "red")
 
-
+main %>%
+  ggplot(aes(x = educ, y = logwage)) +
+  geom_point()
 
 # log transform ----------------------------------------------------------------
 

@@ -118,19 +118,122 @@ base_iq_exp2_IVep_IVdi <-
 
 summary(base_iq_exp_IVep_IVdi)
 
-base_iq_exp2_IVep_IVdi_IVage <-   
+finalModel <-   
   main %>%
   ivreg(log(wage) ~ iq | educ + I(exp^2) | age + educ_parent + dist_to_unitown, data = .)
 
-summary(base_iq_exp2_IVep_IVdi_IVage)
+summary(finalModel)
 
 
-stargazer(base_iq_IVep_IVdi, base_iq_exp2_IVep_IVdi_IVage, type = "text")
+stargazer(base_iq_IVep_IVdi, finalModel, type = "text")
 
 
 
 #-------------------------------------------------------------------------------
 
+
+#probati sa mincer review quadratic educ # NISTA OVO
+
+base2_iq_exp2_IVep_IVdi_IVage <-   
+  main %>%
+  ivreg(log(wage) ~ iq | I(educ^2) + I(exp^2) | age + educ_parent + dist_to_unitown, data = .)
+
+summary(base2_iq_exp2_IVep_IVdi_IVage)
+
+stargazer(base_iq_exp2_IVep_IVdi_IVage, base2_iq_exp2_IVep_IVdi_IVage, type = "text")
+
+
+#-------------------------------------------------------------------------------
+
+#added nonquadratic NISTA OVO JER VJEROVATNO AUTOMATSKI doda vertex
+base2_iq_exp_exp2_IVep_IVdi_IVage <-   
+  main %>%
+  ivreg(log(wage) ~ iq | educ + I(exp^2) | age + educ_parent + dist_to_unitown, data = .)
+
+summary(base2_iq_exp_exp2_IVep_IVdi_IVage)
+# ako dodas age squared nista se ne promejni
+
+test <-   
+  main %>%
+  ivreg(log(wage) ~ iq | educ + exp + I(exp^2) | age + educ_parent + dist_to_unitown, data = .)
+
+summary(test) #IMA SMISLA ZA VERTEX EXP = 35 a negativan znaci OPENS DOWN
+
+test2 <-   
+  main %>%
+  ivreg(log(wage) ~ exp + I(exp^2) | age + I(age^2), data = .)
+
+summary(test2)
+
+a <-   
+  main %>%
+  ivreg(log(wage) ~ iq | educ + I(exp^2) | age + educ_parent + dist_to_unitown, data = .)
+
+#-------------------------------------------------------------------------------
+
+#provjera za poly
+
+nopoly <-   
+  main %>%
+  ivreg(log(wage) ~ iq | educ + I(exp^2) | age + educ_parent + dist_to_unitown, data = .)
+
+poly <-   
+  main %>%
+  ivreg(log(wage) ~ iq | educ + poly(exp, 2, raw = TRUE) | poly(age, 2, raw = TRUE) + educ_parent + dist_to_unitown, data = .)
+
+polyage <-   
+  main %>%
+  ivreg(log(wage) ~ iq | educ + poly(exp, 4, raw = TRUE) | poly(age, 4, raw = TRUE) + educ_parent + dist_to_unitown, data = .)
+
+polyeduc <-   
+  main %>%
+  ivreg(log(wage) ~ iq | poly(educ, 2, raw=TRUE) + poly(exp, 2, raw = TRUE) | poly(age, 2, raw = TRUE) + poly(educ_parent, 2, raw=TRUE) + dist_to_unitown, data = .)
+
+
+nestzaiq <-   
+  main %>%
+  ivreg(log(wage) ~  educ + poly(exp, 2, raw = TRUE) | iq + poly(age, 2, raw = TRUE) + educ_parent + dist_to_unitown, data = .)
+
+summary(nestzaiq)
+
+
+summary(nopoly)
+summary(poly) #nije isto bgmi, SA RAW JESTE ISTO
+summary(polyage)
+summary(polyeduc)
+
+# POLY JE SAD MOZDA NAJBOLJI MODEL AL NIJE ZA EXP SIGNIFICANT
+
+
+# poly(age,2, raw = TRUE)
+
+
+stargazer(nopoly, poly, type = "text")
+
+#-------------------------------------------------------------------------------
+
+b <-   
+  main %>%
+  ivreg(log(wage) ~ exp + I(exp^2), data = .)
+
+summary(b)
+
+c <-   
+  main %>%
+  ivreg(log(wage) ~ exp + poly(exp, 2), data = .)
+
+summary(c)
+
+main$exp2 <- main$exp^2
+
+p <- predict(finalModel, main$educ)
+
+main %>%
+  ggplot(aes(educ, logwage)) +
+  geom_point() +
+
+
+#-------------------------------------------------------------------------------
 
 #first quarter introduced
 base_iq_exp2_IVep_IVdi_IVage_IVfq <-   
