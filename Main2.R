@@ -225,8 +225,31 @@ summary(polyeduc)
 # POLY JE SAD MOZDA NAJBOLJI MODEL AL NIJE ZA EXP SIGNIFICANT
 
 
-# poly(age,2, raw = TRUE)
 
+# da probam bez edu parents
+bezpar <-   
+  main %>%
+  ivreg(log(wage) ~ iq | educ + poly(exp, 2, raw = TRUE) | poly(age, 2, raw = TRUE) + dist_to_unitown, data = .)
+
+bezexp2ep <-   
+  main %>%
+  ivreg(log(wage) ~ iq | educ + exp | educ_parent + age + dist_to_unitown, data = .)
+
+bezexp2 <-   
+  main %>%
+  ivreg(log(wage) ~ iq | educ + exp | age + dist_to_unitown, data = .)
+
+summary(bezexp2ep)
+summary(bezexp2)
+stargazer(bezexp2ep, bezexp2, type = "text")
+
+
+
+summary(bezpar)
+stargazer(poly, bezpar, type = "text")
+
+
+# poly(age,2, raw = TRUE)
 
 stargazer(nopoly, poly, type = "text")
 
