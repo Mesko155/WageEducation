@@ -180,10 +180,16 @@ nopoly <-
 poly <-   
   main %>%
   ivreg(log(wage) ~ iq | educ + poly(exp, 2, raw = TRUE) | poly(age, 2, raw = TRUE) + educ_parent + dist_to_unitown, data = .)
+# https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faqhow-do-i-interpret-the-sign-of-the-quadratic-term-in-a-polynomial-regression/
+# interpret quadratics
+
 
 polyage <-   
   main %>%
   ivreg(log(wage) ~ iq | educ + poly(exp, 4, raw = TRUE) | poly(age, 4, raw = TRUE) + educ_parent + dist_to_unitown, data = .)
+# https://uoepsy.github.io/msmr/2021/msmrlabs/03_nonlin.html#:~:text=%E2%80%9CRaw%E2%80%9D%20(or%20%E2%80%9CNatural,2%2C%203%20and%20so%20on.
+# interpret higher order poly
+
 
 polyeduc <-   
   main %>%
@@ -196,6 +202,20 @@ nestzaiq <-
 
 summary(nestzaiq)
 
+orthogonal <-   
+  main %>%
+  ivreg(log(wage) ~  iq | educ + poly(exp, 2) | poly(age, 2) + educ_parent + dist_to_unitown, data = .)
+
+summary(orthogonal)
+
+# sign kad nije kvadrirano
+expage <-   
+  main %>%
+  ivreg(log(wage) ~ iq | educ + exp | age + educ_parent + dist_to_unitown, data = .)
+
+summary(expage)
+
+stargazer(expage, poly, type = "text")
 
 summary(nopoly)
 summary(poly) #nije isto bgmi, SA RAW JESTE ISTO
