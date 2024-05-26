@@ -9,7 +9,7 @@ library(modelsummary)
 library(car)
 #library(broom)
 #library(AER)
-
+rm(list = ls())
 
 #https://cran.r-project.org/web/packages/ivreg/vignettes/ivreg.html
 
@@ -252,30 +252,6 @@ stargazer(poly, bezpar, type = "text")
 # poly(age,2, raw = TRUE)
 
 stargazer(nopoly, poly, type = "text")
-
-#-------------------------------------------------------------------------------
-
-b <-   
-  main %>%
-  ivreg(log(wage) ~ exp + I(exp^2), data = .)
-
-summary(b)
-
-c <-   
-  main %>%
-  ivreg(log(wage) ~ exp + poly(exp, 2), data = .)
-
-summary(c)
-
-main$exp2 <- main$exp^2
-
-p <- predict(finalModel, main$educ)
-
-main %>%
-  ggplot(aes(educ, logwage)) +
-  geom_point() +
-
-
 #-------------------------------------------------------------------------------
 
 #first quarter introduced

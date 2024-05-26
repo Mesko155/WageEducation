@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.23)  24 MAY 2024 20:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.23)  26 MAY 2024 14:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -49,7 +49,28 @@ File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 6.
- [1
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.9 V_
+      {n,j,t} =\delta_{n,p} +\beta_{Price,n} (Price_{n,j,t}+\beta_{Org,n,p} ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 9.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 9.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.10 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+[1
 
 {c:/ProgramData/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./formule.aux)
  ***********
@@ -58,18 +79,18 @@ L3 programming layer <2024-04-11>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 449 strings out of 475949
- 8618 string characters out of 5787054
- 1925754 words of memory out of 5000000
- 22714 multiletter control sequences out of 15000+600000
+ 451 strings out of 475949
+ 8646 string characters out of 5787054
+ 1926754 words of memory out of 5000000
+ 22716 multiletter control sequences out of 15000+600000
  558404 words of font info for 37 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 35i,5n,50p,135b,109s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <c:/ProgramData/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on formule.pdf (1 page, 23028 bytes).
+ 35i,5n,50p,233b,109s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <c:/ProgramData/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on formule.pdf (1 page, 55734 bytes).
 PDF statistics:
- 23 PDF objects out of 1000 (max. 8388607)
- 14 compressed objects within 1 object stream
+ 38 PDF objects out of 1000 (max. 8388607)
+ 23 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
