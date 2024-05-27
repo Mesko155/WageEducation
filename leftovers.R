@@ -130,7 +130,40 @@ main %>%
 #-------------------------------------------------------------------------------
 
 
+forSave <- 
+  plot_grid(
+    plot1,
+    plot2,
+    plot3,
+    plot4,
+    plot5,
+    plot6,
+    plot7,
+    plot8,
+    nrow = 4,
+    ncol = 2,
+    byrow = TRUE,
+    align = vh
+  )
 
+ggsave("forSave.png", forSave, width = 3, height = 9, units = "cm")
+
+
+grid.arrange(
+  grobs = list(
+    plot1,
+    plot2,
+    plot3,
+    plot4,
+    plot5,
+    plot6,
+    plot7,
+    plot8
+  ),
+  nrow = 4,
+  ncol = 2,
+  respect = TRUE
+)
 
 
 
