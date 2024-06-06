@@ -190,7 +190,7 @@ exclusionALL <-
   main %>%
   ivreg(log(wage) ~ edu + edu_par + dist + age + iq + poly(exp, 2, raw = TRUE), data = .)
 
-summary(exclusion)
+summary(exclusionALL)
 
 exclusion1 <-   
   main %>%

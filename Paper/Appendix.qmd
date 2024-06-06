@@ -53,11 +53,11 @@ library(car)
 ### 1.2 Clean environment and load data
 
 ```{r}
-rm(list=ls())
+# rm(list=ls())
 # setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 # code above sets wd to current open file
 # have data file in the same folder as this quarto document
-main <- read.csv("data_weekly_earnings.csv")
+# main <- read.csv("data_weekly_earnings.csv")
 ```
 
 ### 1.3 Prepare data-set
@@ -341,7 +341,7 @@ exclusionALL <-
   main %>%
   ivreg(log(wage) ~ edu + edu_par + dist + age + iq + poly(exp, 2, raw = TRUE), data = .)
 
-summary(exclusion)
+summary(exclusionALL)
 
 exclusion1 <-   
   main %>%

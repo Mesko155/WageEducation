@@ -20,8 +20,8 @@ library(ivreg)
 library(mgcv)
 
 
-library(rddtools)
-library(broom)
+#library(rddtools)
+#library(broom)
 
 
 # ENVIRONMENT AND PREPWORK -----------------------------------------------------
@@ -248,12 +248,12 @@ main %>%
 
 
 # plot recentered on mean average wage
-main %>%
-  ggplot(aes(mean_wage, educ)) +
-  geom_point(alpha = 0.5) +
-  geom_vline(aes(xintercept = 0), color = "red")
-
-mean(main$wage)
+# main %>%
+#   ggplot(aes(mean_wage, educ)) +
+#   geom_point(alpha = 0.5) +
+#   geom_vline(aes(xintercept = 0), color = "red")
+# 
+# mean(main$wage)
 
 
 main %>%
