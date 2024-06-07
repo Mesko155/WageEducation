@@ -8,7 +8,10 @@ main %>%
   geom_point(alpha = 0.5) +
   geom_point(stat = "summary", fun = "mean", color = "red")
 
-
+main %>%
+  ggplot(aes(exp, logwage)) +
+  geom_point(alpha = 0.5) +
+  geom_point(stat = "summary", fun = "mean", color = "red")
 
 
 
